@@ -7,12 +7,13 @@ const widthAdd = document.getElementById('width-add')
 const heightAdd = document.getElementById('height-add')
 const formAddCards = document.getElementById('form-add')
 const featuresAdd = document.getElementById('features-add')
-
 const inputsAdd = document.querySelectorAll('.js-add-input')
+
 const handleAddCards = (evt) => {
+  console.log(cards)
   evt.preventDefault()
   const newObject = {
-    id: 3,
+    id: '',
     title: titleAdd.value,
     img: imgAdd.value,
     price: priceAdd.value,
@@ -24,13 +25,12 @@ const handleAddCards = (evt) => {
     isFavorite: false,
     features: featuresAdd.value.split(','),
   }
-
-  products.push(newObject)
-  renderCards(products)
-  console.log(products)
-  inputsAdd.forEach((item) => {
-    item.value = null
-  })
+  if (imgAdd.value !== '') {
+    cards.push(newObject)
+    renderCards(cards)
+  } else if (imgAdd.value === '') {
+    imgAdd.classList.add('is-invalid')
+  }
 }
 
 formAddCards.addEventListener('submit', handleAddCards)

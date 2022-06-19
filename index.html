@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Zimbabwa parrots</title>
+    <title>Tashkent parrots</title>
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/style.css" />
     <script
@@ -121,16 +121,18 @@
 
             <div class="mb-3">
               <label for="sortby" class="form-label">Sort by</label>
-              <select class="form-select" id="sortby">
-                <option value="1">Name</option>
-                <option value="2">Price: to lowest</option>
-                <option value="3">Price: to highest</option>
-                <option value="3">Birth: to highest</option>
-                <option value="3">Birth: to lowest</option>
+              <select id="sort-select" class="form-select">
+                <option value="name">Name</option>
+                <option value="prLowest">Price: to Lowest</option>
+                <option value="prHighest">Price: to Highest</option>
+                <option value="dtNew">Date: to New</option>
+                <option value="dtOld">Date: to Old</option>
               </select>
             </div>
 
-            <button class="btn btn-primary d-block w-100 py-2">Filter</button>
+            <button id="filter-btn" class="btn btn-primary d-block w-100 py-2">
+              Filter
+            </button>
           </form>
         </div>
 
@@ -265,8 +267,111 @@
         </div>
       </div>
     </div>
+    <div
+      class="modal fade"
+      id="add-parrot-modalChange"
+      tabindex="-1"
+      aria-labelledby="addParrotTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addParrotTitle">Change parrot</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="form-change">
+              <div class="mb-3">
+                <label for="parrot-title" class="form-label">Title</label>
+                <input
+                  type="search"
+                  class="js-add-input form-control"
+                  id="title-change"
+                  placeholder="Kakatu"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="parrot-img" class="form-label">Img URL</label>
+                <input
+                  id="img-change"
+                  type="text"
+                  class="js-add-input form-control"
+                  id="img-change"
+                  placeholder="https://..."
+                />
+              </div>
+              <div class="mb-3">
+                <label for="price" class="form-label">Price ($)</label>
+                <input
+                  type="number"
+                  class="js-add-input form-control"
+                  id="price-change"
+                  placeholder="1000"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="parrot-date" class="form-label">Birth date</label>
+                <input
+                  type="date"
+                  class="js-add-input form-control"
+                  id="date-change"
+                  placeholder="12.02.2022"
+                />
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Width and Height</label>
+                <div class="row">
+                  <div class="col-6">
+                    <input
+                      type="number"
+                      class="js-add-input form-control"
+                      id="width-change"
+                      min="0"
+                      aria-label="Parrot width"
+                      placeholder="Parrot width"
+                    />
+                  </div>
+                  <div class="col-6">
+                    <input
+                      type="number"
+                      class="js-add-input form-control"
+                      id="height-change"
+                      min="0"
+                      aria-label="Parrot height"
+                      placeholder="Parrot height"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="features" class="form-label"
+                  >Features ("," bilan ajratib yozing)</label
+                >
+                <input
+                  id="features-change"
+                  type="text"
+                  class="form-control"
+                  placeholder="Qo'lga o'rgatilgan,Gapira oladi"
+                />
+              </div>
+              <button type="submit" class="btn btn-primary d-block w-100 p-2">
+                Filter
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
     <template id="card-template">
-      <li id="item-card" class="col-6">
+      <li id="card-item" class="col-6">
         <div class="card">
           <img
             id="card-img"
@@ -276,18 +381,18 @@
             height="213"
           />
           <div class="card-body">
-            <h3 id="card-title">Hyacinth macaw</h3>
-            <p id="card-price" class="fw-bold"><mark>$5000</mark></p>
-            <p id="card-badge" class="bg-success">184sm x 50sm</p>
+            <h3 id="card-title"></h3>
+            <p id="card-price" class="fw-bold"><mark></mark></p>
+            <p id="card-badge" class="bg-success"></p>
 
-            <p id="card-date" class="card-text">12.05.2022</p>
+            <p id="card-date" class="card-text"></p>
 
             <ul class="d-flex flex-wrap list-unstyled">
-              <li class="badge bg-primary me-1 mb-1">Beautiful</li>
-              <li class="badge bg-primary me-1 mb-1">Tame</li>
-              <li class="badge bg-primary me-1 mb-1">Can speak</li>
-              <li class="badge bg-primary me-1 mb-1">Can speak</li>
-              <li class="badge bg-primary me-1 mb-1">Can speak</li>
+              <li class="badge bg-primary me-1 mb-1"></li>
+              <li class="badge bg-primary me-1 mb-1"></li>
+              <li class="badge bg-primary me-1 mb-1"></li>
+              <li class="badge bg-primary me-1 mb-1"></li>
+              <li class="badge bg-primary me-1 mb-1"></li>
             </ul>
 
             <div class="position-absolute top-0 end-0 d-flex">
@@ -298,9 +403,15 @@
                   style="color: yellow; pointer-events: none"
                 ></i>
               </button>
-              <button class="btn rounded-0 btn-secondary">
+              <button
+                id="change-btn"
+                class="js-edit btn rounded-0 btn-secondary"
+                data-bs-toggle="modal"
+                data-bs-target="#add-parrot-modalChange"
+              >
                 <i class="fa-solid fa-pen" style="pointer-events: none"></i>
               </button>
+
               <button class="btn rounded-0 btn-danger">
                 <i class="fa-solid fa-trash" style="pointer-events: none"></i>
               </button>
@@ -313,6 +424,9 @@
 
     <script src="js/data.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/filter.js"></script>
+    <script src="js/handleDelete.js"></script>
+    <script src="js/handleChange.js"></script>
     <script src="js/handleAdd.js"></script>
   </body>
 </html>

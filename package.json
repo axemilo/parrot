@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "uuid": "^8.3.2"
+  },
+  "name": "imtihon",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/axemilo/parrot.git"
+  },
+  "author": "axemilo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/axemilo/parrot/issues"
+  },
+  "homepage": "https://github.com/axemilo/parrot#readme",
+  "description": ""
+}
