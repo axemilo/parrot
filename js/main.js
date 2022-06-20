@@ -1,6 +1,7 @@
 const cardTemplate = document.getElementById('card-template').content
 const cardList = document.getElementById('card-list')
 const searchInput = document.getElementById('search')
+const countText = document.getElementById('count-text')
 
 let cards = []
 
@@ -8,9 +9,10 @@ const generatorId = () =>
   Math.floor((1 + Math.random()) * 0x10000000000)
     .toString(16)
     .substring(2)
+
 const renderCards = (products) => {
   cardList.innerHTML = null
-  products.forEach((item) => {
+  products.forEach((item, index) => {
     const { title, img, price, features, birthDate, sizes, id } = item
     const card = cardTemplate.cloneNode(true)
     const cardTitle = card.getElementById('card-title')
@@ -23,10 +25,11 @@ const renderCards = (products) => {
     const cardBadges = card.querySelectorAll('.badge')
     item.id = generatorId()
 
+    countText.textContent = 'Count: ' + (1 + index)
+
     cardChangeBtn.dataset.id = item.id
     cardDeleteBtn.dataset.id = item.id
 
-    cardDeleteBtn.data
     cardBadges.forEach((badge, index) => (badge.textContent = features[index]))
     cardTitle.textContent = title
     cardPrice.textContent = price + '$'
@@ -36,18 +39,23 @@ const renderCards = (products) => {
     cardList.appendChild(card)
   })
 }
-cards.push(...products)
 
+cards.push(...products)
 renderCards(cards)
 
 const handleSearch = (evt) => {
   const searchText = evt.target.value.trim()
-
   const regex = new RegExp(searchText, 'gi')
 
-  const foundCards = cards.filter((card) => card.title.match(regex))
-  if (searchInput.value !== null) renderCards(foundCards)
-  if (searchInput.value == null) renderCards(cards)
+  let foundCards = cards.filter((card) => card.title.match(regex))
+  if (searchInput.value !== null) {
+    cards = foundCards
+    renderCards(foundCards)
+  }
+  if (searchInput.value == '') {
+    cards = products
+    renderCards(cards)
+  }
 }
 
 searchInput.addEventListener('keyup', handleSearch)

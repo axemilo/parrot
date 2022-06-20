@@ -5,6 +5,7 @@ const handleDelete = (evt) => {
     const indexCard = cards.findIndex((item) => element.dataset.id == item.id)
     console.log(indexCard)
     cards.splice(indexCard, 1)
+
     renderCards(cards)
   }
 }
