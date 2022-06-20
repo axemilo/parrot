@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tashkent parrots</title>
+    <title>Animal Shop</title>
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/style.css" />
     <script
@@ -15,7 +15,7 @@
   <body>
     <div class="container my-5">
       <div class="d-flex justify-content-between">
-        <h1 class="h2">Parrots Shop</h1>
+        <h1 class="h2">Animal Shop</h1>
 
         <button
           id="add-button"
@@ -23,7 +23,7 @@
           data-bs-toggle="modal"
           data-bs-target="#add-parrot-modal"
         >
-          <span class="me-2">Add parrot</span>
+          <span class="me-2">Add animal</span>
           <i class="fa-solid fa-plus"></i>
         </button>
       </div>
@@ -48,7 +48,7 @@
                   <input
                     type="number"
                     class="form-control"
-                    id="from"
+                    id="from-price"
                     min="0"
                     aria-label="From"
                     placeholder="From"
@@ -58,7 +58,7 @@
                   <input
                     type="number"
                     class="form-control"
-                    id="to"
+                    id="to-price"
                     min="0"
                     aria-label="To"
                     placeholder="To"
@@ -74,7 +74,7 @@
                   <input
                     type="number"
                     class="form-control"
-                    id="from_width"
+                    id="from-width"
                     min="0"
                     aria-label="From width"
                     placeholder="From width"
@@ -84,7 +84,7 @@
                   <input
                     type="number"
                     class="form-control"
-                    id="to_width"
+                    id="to-width"
                     min="0"
                     aria-label="To width"
                     placeholder="To width"
@@ -100,7 +100,7 @@
                   <input
                     type="number"
                     class="form-control"
-                    id="from_height"
+                    id="from-height"
                     min="0"
                     aria-label="From height"
                     placeholder="From height"
@@ -110,7 +110,7 @@
                   <input
                     type="number"
                     class="form-control"
-                    id="to_height"
+                    id="to-height"
                     min="0"
                     aria-label="To height"
                     placeholder="To height"
@@ -138,7 +138,7 @@
 
         <section class="col-6">
           <div class="d-flex justify-content-between align-items-baseline">
-            <h2 class="h4 mb-4">Parrots list</h2>
+            <h2 class="h4 mb-4">Animal list</h2>
             <p>Count: 2</p>
           </div>
 
@@ -146,7 +146,7 @@
         </section>
 
         <section class="col-3">
-          <h2 class="h4 mb-4">Favorite parrots</h2>
+          <h2 class="h4 mb-4">Favorite animals</h2>
 
           <ul class="list-unstyled">
             <li class="card p-3 mb-2">
@@ -174,7 +174,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="addParrotTitle">Add parrot</h5>
+            <h5 class="modal-title" id="addParrotTitle">Add animal</h5>
             <button
               type="button"
               class="btn-close"
@@ -190,7 +190,7 @@
                   type="search"
                   class="js-add-input form-control"
                   id="title-add"
-                  placeholder="Kakatu"
+                  placeholder="Something..."
                 />
               </div>
               <div class="mb-3">
@@ -221,7 +221,6 @@
                   placeholder="12.02.2022"
                 />
               </div>
-
               <div class="mb-3">
                 <label class="form-label">Width and Height</label>
                 <div class="row">
@@ -232,7 +231,7 @@
                       id="width-add"
                       min="0"
                       aria-label="Parrot width"
-                      placeholder="Parrot width"
+                      placeholder="Animal width"
                     />
                   </div>
                   <div class="col-6">
@@ -242,7 +241,7 @@
                       id="height-add"
                       min="0"
                       aria-label="Parrot height"
-                      placeholder="Parrot height"
+                      placeholder="Animal height"
                     />
                   </div>
                 </div>
@@ -277,7 +276,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="addParrotTitle">Change parrot</h5>
+            <h5 class="modal-title" id="addParrotTitle">Change animal</h5>
             <button
               type="button"
               class="btn-close"
@@ -293,7 +292,7 @@
                   type="search"
                   class="js-add-input form-control"
                   id="title-change"
-                  placeholder="Kakatu"
+                  placeholder="Something..."
                 />
               </div>
               <div class="mb-3">
@@ -312,7 +311,7 @@
                   type="number"
                   class="js-add-input form-control"
                   id="price-change"
-                  placeholder="1000"
+                  placeholder="1200"
                 />
               </div>
               <div class="mb-3">
@@ -335,7 +334,7 @@
                       id="width-change"
                       min="0"
                       aria-label="Parrot width"
-                      placeholder="Parrot width"
+                      placeholder="Animal width"
                     />
                   </div>
                   <div class="col-6">
@@ -345,7 +344,7 @@
                       id="height-change"
                       min="0"
                       aria-label="Parrot height"
-                      placeholder="Parrot height"
+                      placeholder="Animal height"
                     />
                   </div>
                 </div>
@@ -412,7 +411,10 @@
                 <i class="fa-solid fa-pen" style="pointer-events: none"></i>
               </button>
 
-              <button class="btn rounded-0 btn-danger">
+              <button
+                id="delete-btn"
+                class="btn rounded-0 btn-danger js-delete"
+              >
                 <i class="fa-solid fa-trash" style="pointer-events: none"></i>
               </button>
             </div>

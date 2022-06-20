@@ -2,7 +2,7 @@ const cardTemplate = document.getElementById('card-template').content
 const cardList = document.getElementById('card-list')
 const searchInput = document.getElementById('search')
 
-const cards = []
+let cards = []
 
 const generatorId = () =>
   Math.floor((1 + Math.random()) * 0x10000000000)
@@ -19,8 +19,14 @@ const renderCards = (products) => {
     const cardBadge = card.getElementById('card-badge')
     const cardDate = card.getElementById('card-date')
     const cardChangeBtn = card.getElementById('change-btn')
+    const cardDeleteBtn = card.getElementById('delete-btn')
     const cardBadges = card.querySelectorAll('.badge')
-    cardChangeBtn.dataset.id = generatorId()
+    item.id = generatorId()
+
+    cardChangeBtn.dataset.id = item.id
+    cardDeleteBtn.dataset.id = item.id
+
+    cardDeleteBtn.data
     cardBadges.forEach((badge, index) => (badge.textContent = features[index]))
     cardTitle.textContent = title
     cardPrice.textContent = price + '$'
@@ -28,12 +34,11 @@ const renderCards = (products) => {
     cardBadge.textContent = `${sizes.width}sm x ${sizes.height}sm`
     cardDate.textContent = birthDate
     cardList.appendChild(card)
-    item.id = cardChangeBtn.dataset.id
   })
 }
-
-renderCards(products)
 cards.push(...products)
+
+renderCards(cards)
 
 const handleSearch = (evt) => {
   const searchText = evt.target.value.trim()
@@ -41,7 +46,8 @@ const handleSearch = (evt) => {
   const regex = new RegExp(searchText, 'gi')
 
   const foundCards = cards.filter((card) => card.title.match(regex))
-  renderCards(foundCards)
+  if (searchInput.value !== null) renderCards(foundCards)
+  if (searchInput.value == null) renderCards(cards)
 }
 
 searchInput.addEventListener('keyup', handleSearch)

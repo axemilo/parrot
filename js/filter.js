@@ -1,5 +1,13 @@
 const sortSelect = document.getElementById('sort-select')
 const filterBtn = document.getElementById('filter-btn')
+
+const fromPrice = document.getElementById('from-price')
+const toPrice = document.getElementById('to-price')
+const fromWidth = document.getElementById('from-width')
+const toWidth = document.getElementById('to-width')
+const fromHeight = document.getElementById('from-height')
+const toHeight = document.getElementById('to-height')
+
 const sortFunctions = {
   name: (a, b) => {
     if (a.title.toLowerCase() > b.title.toLowerCase()) {
@@ -43,9 +51,26 @@ const sortFunctions = {
     }
   },
 }
+
 const handleFilter = (evt) => {
-  const foundCards = cards.sort(sortFunctions[sortSelect.value])
-  renderCards(foundCards)
+  evt.preventDefault()
+  let filtredCards = cards.sort(sortFunctions[sortSelect.value])
+  const foundCards = cards.filter((item) => {
+    if (item.price >= fromPrice.value && item.price <= toPrice.value)
+      return item
+    if (
+      item.sizes.width >= fromWidth.value &&
+      item.sizes.width <= toWidth.value
+    )
+      return item
+    if (
+      item.sizes.height >= fromHeight.value &&
+      item.sizes.height <= toHeight.value
+    )
+      return item
+  })
+  filtredCards = foundCards
+  renderCards(filtredCards)
 }
 
 filterBtn.addEventListener('click', handleFilter)
